@@ -71,6 +71,13 @@ print(len(random_string)) # Print out the size for reference
 # Output which letter occurred the least 
 # Output what the percentage of the string each character is, again in alphabetical
 
+# Make the list go through it self and create a key for each value 
+letters_list= {}
+for i in random_string:
+    if i not in letters_list.keys():
+        letters_list[i] = 1
+    else:
+        letters_list[i] += 1
 #Tips and trick:
 # You can iterate through strings like you would a list
 # All characters are lowercase 
@@ -79,6 +86,10 @@ print(len(random_string)) # Print out the size for reference
     # You will  need to add the letter to the dictionary on first occurrence 
     # Then increment its corresponding count 
 
+key_letters = list(letters_list.keys())
+key_letters.sort()
+sorted_list = {i: letters_list[i] for i in key_letters}
+print(sorted_list)
 
 #Load all the elements into a dictionary
 #Will need to first declare a dictionary 
@@ -88,9 +99,15 @@ print(len(random_string)) # Print out the size for reference
 print("*"*75)
 # Output which letter occurred the most 
 
-most_occurred = ""
-least_occurred = ""
+most_occurred = "a"
+least_occurred = "a"
+for i in sorted_list:
+    if sorted_list[i] >= sorted_list[most_occurred]:
+        most_occurred = i
 
+for i in sorted_list:
+    if sorted_list[i] <= sorted_list[least_occurred]:
+        least_occurred = i
 print(f"The letter that occurred the most is {most_occurred}")
 print("*"*75)
 # Output which letter occurred the least 
